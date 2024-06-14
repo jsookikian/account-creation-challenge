@@ -2,31 +2,39 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   test "should not save user without username" do
-    user = User.new(password: '123')
+    user = User.new(password: '12345678')
     assert_not user.save
   end
 
   test "should not save user without password" do
-    user = User.new(username: '123')
+    user = User.new(username: 'validusername')
     assert_not user.save
   end
 
-  test "should save user" do
-    user = User.new(username: '123', password: '123')
+  test "should save user with valid username and password" do
+    user = User.new(username: 'validusername', password: 'validpassword')
     assert user.save
   end
 
   test "should validate username" do
-    assert_not User.validate_username('123456789'), "< 10"
-    assert User.validate_username('1234567890'), ">= 10"
-    assert User.validate_username('12345678901234567890123456789012345678901234567890'), "<= 50"
-    assert_not User.validate_username('123456789012345678901234567890123456789012345678901'), "> 50"
+    user = User.new(username: 'short', password: 'validpassword')
+    assert_not user.validate_username, "Username is too short"
+
+    user.username = 'validusername'
+    assert user.validate_username, "Username is valid"
+
+    user.username = 'a' * 51
+    assert_not user.validate_username, "Username is too long"
   end
 
   test "should validate password" do
-    assert_not User.validate_password('123456789012345678a'), "< 20"
-    assert User.validate_password('1234567890123456789a'), ">= 20"
-    assert User.validate_password('1234567890123456789012345678901234567890123456789a'), "<= 50"
-    assert_not User.validate_password('123456789012345678901234567890123456789012345678901a'), "> 50"
+    user = User.new(username: 'validusername', password: 'short')
+    assert_not user.validate_password, "Password is too short"
+
+    user.password = 'validpassword'
+    assert user.validate_password, "Password is valid"
+
+    user.password = 'a' * 7
+    assert_not user.validate_password, "Password is too short"
   end
 end

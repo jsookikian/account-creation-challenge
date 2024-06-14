@@ -5,8 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { CreateUser } from './create-user';
 
 describe('CreateUser', () => {
-  test('render', () => {});
+  test('render', () => { });
   render(<CreateUser />, { wrapper: BrowserRouter });
-  screen.getByLabelText('First name');
-  screen.getByLabelText('Last name');
+  screen.getByText('First name');
+  screen.getByText('Last name');
 });

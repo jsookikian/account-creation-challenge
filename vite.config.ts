@@ -10,4 +10,11 @@ export default defineConfig({
       app: resolve(__dirname, './app'),
     },
   },
+  server: {
+    host: 'localhost',
+    port: 3036,
+  },
+
+
+
 });

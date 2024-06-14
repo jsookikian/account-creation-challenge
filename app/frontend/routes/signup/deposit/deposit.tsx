@@ -8,7 +8,7 @@ export function Deposit() {
   return (
     <FlowLayout>
       <Card title="Deposit funds" description="Accounts can be funded with as little as $5.">
-        <div className="space-y-2">
+        <div className="space-y-2  mt-8 flex flex-col">
           <Input label="Deposit Amount" />
           <Button href="/signup/account-selection">Start over</Button>
         </div>

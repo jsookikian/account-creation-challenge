@@ -12,7 +12,7 @@ export function StockRestrictions() {
         description="If you are a broker dealer or registered representative of another company, you may be restricted from trading that stock."
       >
         {/*<li>style UI to look like given mock, make sure the typeahead is realtime feeling search</li>*/}
-        <div className="space-y-2">
+        <div className="space-y-2  mt-8 flex flex-col">
           <Input label="Stock Symbol" />
           <Button href="/signup/deposit">Continue</Button>
         </div>

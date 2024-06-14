@@ -1,19 +1,26 @@
+import { useLogout } from 'app/frontend/hooks/useLogout';
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from '../button/button';
 
 interface Props {
   children: ReactNode;
 }
 
 export function FlowLayout({ children }: Props) {
+  const logout = useLogout();
   return (
-    <div className="h-full mt-5 max-w-[1000px] mx-auto">
-      <div className="w-full text-right">
-        <Link to="/logout" reloadDocument>
+    <div className="flex flex-col h-full mt-5 max-w-[1000px]
+    mx-6
+    lg:mx-48
+    md:mx-24
+    items-center
+    ">
+      < div className="flex w-full text-right p-4 justify-end" >
+        <Button onClick={logout} styles="max-w-[80px]">
           Logout
-        </Link>
-      </div>
+        </Button>
+      </div >
       {children}
-    </div>
+    </div >
   );
 }

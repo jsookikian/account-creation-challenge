@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.1.4"
+ruby "3.1.6"
 
 gem "rails", "~> 7.0.8"
 
@@ -21,6 +21,8 @@ gem "importmap-rails", "1.2.1"
 
 gem 'zxcvbn', '0.1.9'
 
+# JWT tokens
+gem 'jwt', '2.8.1'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "1.4.0"
@@ -32,7 +34,7 @@ gem "stimulus-rails", "1.2.2"
 gem "jbuilder", "2.11.5"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", "1.2023.3", platforms: %i[ mingw mswin x64_mingw jruby ]
